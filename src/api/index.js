@@ -6,7 +6,7 @@ switch (import.meta.env.MODE) {
     BASE_URL = "http://localhost:3001";
     break;
   case "production":
-    BASE_URL = "https://highvalyrianglyphs.onrender.com";
+    BASE_URL = "https://highvalyrianapi.onrender.com";
     break;
 }
 export const getGlyphs = async () => {
