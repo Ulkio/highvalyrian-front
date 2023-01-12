@@ -16,7 +16,7 @@ module.exports = {
       }),
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };
 
 // npx tailwindcss -i ./src/index.css -o ./public/output.css --watch

@@ -29,8 +29,8 @@ const Glyphs = () => {
         </div>
       </div>
       {/* RIGHT */}
-      <div className="w-full basis-5/12">
-        <div className="ml-20 flex flex-col items-center">
+      <div className="w-full basis-5/12 scrollbar-track-black ">
+        <div className="ml-20 flex flex-col items-center ">
           <Search value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
           {isLoadingThemes && <h1>Loading...</h1>}
           <div className=" mt-2 flex gap-2 flex-wrap justify-center">
@@ -44,7 +44,7 @@ const Glyphs = () => {
             ))}
           </div>
         </div>
-        <div className="mt-8 flex flex-1 flex-wrap gap-6 justify-center overflow-scroll h-[70vh] overflow-x-hidden ">
+        <div className="mt-8 flex flex-1 flex-wrap gap-6 justify-center overflow-scroll h-[70vh] overflow-x-hidden mr-4 scrollbar-thin scrollbar-thumb-black  scrollbar-track-red-900 ">
           {glyphs
             ?.filter((gl) => {
               return searchValue.toLocaleLowerCase() === ""
