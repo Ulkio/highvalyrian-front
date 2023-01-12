@@ -2,6 +2,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getTheme } from "../api";
 
+let BASE_URL = "";
+if (import.meta.env.DEV) BASE_URL = "http://localhost:3001";
+if (import.meta.env.PROD) BASE_URL = "https://highvalyrianapi.onrender.com";
+
 const CardDetails = ({ glyph }) => {
   const { data: theme } = useQuery({
     enabled: glyph?.classId != null,
@@ -17,7 +21,7 @@ const CardDetails = ({ glyph }) => {
       <div className="bg-white-custom w-[320px] h-[480px] text-dark rounded-2xl shadow-xl flex flex-col justify-evenly py-4 ">
         <img
           className="self-center w-[240px] h-[240px] object-scale-down"
-          src={`http://localhost:3001/assets/${glyph.imagePath}`}
+          src={`${BASE_URL}/assets/${glyph.imagePath}`}
           alt={glyph.valyrianTranslation}
         />
         <p className="first-letter:uppercase text-center font-semibold text-2xl">
