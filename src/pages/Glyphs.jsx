@@ -4,14 +4,14 @@ import Theme from "@c/Theme";
 import Card from "@c/Card";
 import CardDetails from "@c/CardDetails";
 import { getGlyphs, getThemes } from "../api";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const Glyphs = () => {
   const [selectedGlyph, setSelectedGlyph] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [searchValue, setSearchValue] = useState("");
 
-  const { isLoading: isLoadingGlyphs, data: glyphs } = useQuery({
+  const { data: glyphs } = useQuery({
     queryKey: ["glyphs"],
     queryFn: getGlyphs,
   });
@@ -19,12 +19,13 @@ const Glyphs = () => {
     queryKey: ["themes"],
     queryFn: getThemes,
   });
+
   return (
     <section className="pt-24 flex justify-between h-screen bg-gradient-primary overflow-hidden">
       {/* LEFT */}
       <div className="w-full ml-24 basis-6/12">
         <div className="h-full flex justify-center items-center">
-          {selectedGlyph && <CardDetails glyph={selectedGlyph} />}
+          {selectedGlyph && <CardDetails glyph={selectedGlyph} themeId={selectedGlyph.classId} />}
         </div>
       </div>
       {/* RIGHT */}
