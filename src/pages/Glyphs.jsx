@@ -19,17 +19,6 @@ const Glyphs = () => {
     queryKey: ["themes"],
     queryFn: getThemes,
   });
-
-  // const sortedGlyphs = glyphs?.sort(function (a, b) {
-  //   if (a.englishTranslation == b.englishTranslation) return 0;
-  //   if (a.englishTranslation == "") return 1;
-  //   if (b.englishTranslation == "") return -1;
-
-  //   if (a.englishTranslation < b.englishTranslation) return -1;
-  //   if (a.englishTranslation > b.englishTranslation) return 1;
-  //   return 0;
-  // });
-
   return (
     <section className="pt-24 flex justify-between h-screen bg-gradient-primary overflow-hidden">
       {/* LEFT */}

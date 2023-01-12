@@ -1,7 +1,16 @@
 import axios from "axios";
 
+let BASE_URL = "";
+switch (import.meta.env.MODE) {
+  case "development":
+    BASE_URL = "http://localhost:3001";
+    break;
+  case "production":
+    BASE_URL = "https://highvalyrianglyphs.onrender.com";
+    break;
+}
 export const getGlyphs = async () => {
-  const results = await axios.get(`http://localhost:3001/glyphs`);
+  const results = await axios.get(`${BASE_URL}/glyphs`);
   const sortedResults = results.data.sort(function (a, b) {
     if (a.englishTranslation == b.englishTranslation) return 0;
     if (a.englishTranslation == "") return 1;
@@ -14,10 +23,10 @@ export const getGlyphs = async () => {
   return sortedResults;
 };
 export const getThemes = async () => {
-  const results = await axios.get(`http://localhost:3001/classes`);
+  const results = await axios.get(`${BASE_URL}/classes`);
   return results.data;
 };
 export const getTheme = async (id) => {
-  const results = await axios.get(`http://localhost:3001/classes/${id}`);
+  const results = await axios.get(`${BASE_URL}/classes/${id}`);
   return results.data;
 };
