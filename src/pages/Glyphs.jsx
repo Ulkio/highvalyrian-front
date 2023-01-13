@@ -11,7 +11,7 @@ const Glyphs = () => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [searchValue, setSearchValue] = useState("");
 
-  const { data: glyphs } = useQuery({
+  const { isLoading: isLoadingGlyphs, data: glyphs } = useQuery({
     queryKey: ["glyphs"],
     queryFn: getGlyphs,
   });
@@ -23,7 +23,10 @@ const Glyphs = () => {
   const filteredGlyphs = useMemo(() => {
     if (!glyphs) return;
     return glyphs
-      .filter((gl) => searchValue.toLowerCase() === "" || gl.englishTranslation.toLowerCase().includes(searchValue))
+      .filter(
+        (gl) =>
+          searchValue.toLowerCase() === "" || gl.englishTranslation.toLowerCase().includes(searchValue.toLowerCase())
+      )
       .filter((gl) => selectedTheme === null || gl.classId?.includes(selectedTheme?._id));
   }, [glyphs, searchValue, selectedTheme]);
 
@@ -42,7 +45,6 @@ const Glyphs = () => {
       <div className="w-full basis-5/12 scrollbar-track-black ">
         <div className="ml-20 flex flex-col items-center ">
           <Search onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
-          {isLoadingThemes && <h1>Loading...</h1>}
           <div className=" mt-2 flex gap-2 flex-wrap justify-center">
             <p
               onClick={() => setSelectedTheme(null)}
@@ -54,11 +56,17 @@ const Glyphs = () => {
             ))}
           </div>
         </div>
-        <div className="mt-8 flex flex-1 flex-wrap gap-6 justify-center overflow-scroll h-[70vh] overflow-x-hidden mr-4 scrollbar-thin scrollbar-thumb-black scrollbar-track-red-900">
-          {filteredGlyphs?.map((glyph, key) => (
-            <Card onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
-          ))}
-        </div>
+        {isLoadingGlyphs ? (
+          <div className="h-64 self-center flex justify-center items-center text-center">
+            <img src="/assets/Spinner-1.4s-200px.svg" />
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-6 justify-center py-2 mt-8 h-[70vh] mr-4 scrollbar-thin scrollbar-thumb-black scrollbar-track-red-900">
+            {filteredGlyphs?.map((glyph, key) => (
+              <Card onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
