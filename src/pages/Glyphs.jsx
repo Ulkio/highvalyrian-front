@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useMemo } from "react";
 import Search from "@c/Search";
 import Theme from "@c/Theme";
 import Card from "@c/Card";
@@ -20,18 +20,28 @@ const Glyphs = () => {
     queryFn: getThemes,
   });
 
+  const filteredGlyphs = useMemo(() => {
+    if (!glyphs) return;
+    return glyphs
+      .filter((gl) => searchValue.toLowerCase() === "" || gl.englishTranslation.toLowerCase().includes(searchValue))
+      .filter((gl) => selectedTheme === null || gl.classId?.includes(selectedTheme?._id));
+  }, [glyphs, searchValue, selectedTheme]);
+
   return (
-    <section className="pt-24 flex justify-between h-screen bg-gradient-primary overflow-hidden">
+    <section className="pt-4 flex justify-between md:h-[calc(100vh_-_5rem)] bg-gradient-primary ">
       {/* LEFT */}
+
       <div className="w-full ml-24 basis-6/12">
         <div className="h-full flex justify-center items-center">
           {selectedGlyph && <CardDetails glyph={selectedGlyph} themeId={selectedGlyph.classId} />}
         </div>
       </div>
+
       {/* RIGHT */}
+
       <div className="w-full basis-5/12 scrollbar-track-black ">
         <div className="ml-20 flex flex-col items-center ">
-          <Search value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+          <Search onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
           {isLoadingThemes && <h1>Loading...</h1>}
           <div className=" mt-2 flex gap-2 flex-wrap justify-center">
             <p
@@ -44,19 +54,10 @@ const Glyphs = () => {
             ))}
           </div>
         </div>
-        <div className="mt-8 flex flex-1 flex-wrap gap-6 justify-center overflow-scroll h-[70vh] overflow-x-hidden mr-4 scrollbar-thin scrollbar-thumb-black  scrollbar-track-red-900 ">
-          {glyphs
-            ?.filter((gl) => {
-              return searchValue.toLocaleLowerCase() === ""
-                ? gl
-                : gl.englishTranslation.toLowerCase().includes(searchValue);
-            })
-            .filter((gl) => {
-              return selectedTheme === null ? gl : gl.classId?.includes(selectedTheme?._id);
-            })
-            .map((glyph, key) => (
-              <Card onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
-            ))}
+        <div className="mt-8 flex flex-1 flex-wrap gap-6 justify-center overflow-scroll h-[70vh] overflow-x-hidden mr-4 scrollbar-thin scrollbar-thumb-black scrollbar-track-red-900">
+          {filteredGlyphs?.map((glyph, key) => (
+            <Card onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
+          ))}
         </div>
       </div>
     </section>

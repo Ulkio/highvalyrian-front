@@ -1,25 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { React } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import useMediaQuery from "../hooks/useMediaQuery";
-import menuIcon from "../assets/menuIcon.png";
+import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   const isAboveMobileScreens = useMediaQuery("(min-width:768px)");
+  const pathname = useLocation().pathname;
 
   return (
-    <nav className="bg-navbar-dark w-full fixed top-0 z-40 ">
-      <div className="flex justify-between items-center md:px-24 mx-auto h-16">
-        <h4 className="font-bold md:text-lg">{isAboveMobileScreens && <Link to="/">HIGH VALYRIAN GLYPHS</Link>}</h4>
+    <nav className="bg-navbar-dark w-full sticky top-0 z-50">
+      <div className="flex justify-between items-center h-16 md:px-24">
+        <h1 className="font-bold md:text-lg">
+          {isAboveMobileScreens && <NavLink to="/">HIGH VALYRIAN GLYPHS</NavLink>}
+        </h1>
         {isAboveMobileScreens ? (
           <div className="flex justify-between gap-16 text-sm font-semibold">
-            {/* <Link to="/">Glyphs</Link> */}
-            {/* <Link to="/phrases">Phrases</Link>
-            <Link to="/builder">Builder</Link>
-            <Link to="/about">About</Link> */}
+            <NavLink to="/" className={`text-white ${pathname === "/" ? "border-b-[1px] pb-2" : ""}`}>
+              Glyphs
+            </NavLink>
+            {/* <NavLink to="/phrases" className="text-white">
+              Phrases
+            </NavLink>
+            <NavLink to="/builder" className="text-white">
+              Builder
+            </NavLink>
+            <NavLink to="/about" className="text-white">
+              About
+            </NavLink> */}
+            <NavLink to="/contact" className={`text-white ${pathname === "/contact" ? "border-b-[1px] pb-2" : ""}`}>
+              Contact
+            </NavLink>
           </div>
         ) : (
           <div className="px-8">
-            <img src={menuIcon} alt="menu" className="h-[32px]" />
+            <FaBars className="text-white h-8 cursor-pointer" size="30px" />
           </div>
         )}
       </div>

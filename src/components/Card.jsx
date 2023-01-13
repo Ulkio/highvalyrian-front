@@ -1,8 +1,7 @@
 import React from "react";
 
-let BASE_URL = "";
-if (import.meta.env.DEV) BASE_URL = "http://localhost:3001";
-if (import.meta.env.PROD) BASE_URL = "https://highvalyrianapi.onrender.com";
+const BASE_URL =
+  process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://highvalyrianapi.onrender.com";
 
 const Card = ({ glyph, onClick }) => {
   return (
