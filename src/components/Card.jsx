@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 
 const BASE_URL =
   process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://highvalyrianapi.onrender.com";
