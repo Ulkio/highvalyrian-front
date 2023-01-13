@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         dark: "#1E1E24",
         "navbar-dark": "#1A1A1F",
-        "split-red": "#92140C",
+        "split-red": "#6C100A",
         "white-custom": "#FFF8F0",
         "theme-background": "rgba(84, 12, 7, 0.5)",
       },

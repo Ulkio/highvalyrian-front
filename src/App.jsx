@@ -10,7 +10,8 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const isAboveMobileScreens = useMediaQuery("(min-width:768px)");
+  const isAboveMediumScreens = useMediaQuery("(min-width:1024px)");
+
   return (
     <div className="app">
       <Navbar />
@@ -22,7 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      {isAboveMobileScreens && <Footer />}
+      {isAboveMediumScreens && <Footer />}
     </div>
   );
 }
