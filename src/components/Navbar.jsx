@@ -46,13 +46,13 @@ const Navbar = () => {
                 hidden: { y: -100 },
                 visible: { y: 0 },
               }}
-              className={`rounded-b-3xl shadow-xl fixed  right-0 h-64 w-64 uppercase font-semibold text-center text-white-custom bg-split-red flex flex-col justify-center gap-4 ${
+              className={`rounded-b-3xl shadow-xl fixed  right-0 h-64 w-64 uppercase font-semibold text-center text-white-custom bg-split-red flex flex-col justify-around gap-4 ${
                 isMobileNavOpen ? "block" : "hidden"
               }`}>
-              <NavLink to="/" className="border-b-2" onClick={window.scrollTo(100, 100)}>
+              <NavLink to="/" className="border-b-2 border-b-dark">
                 Glyphs
               </NavLink>
-              <NavLink to="/phrases" className="border-b-2">
+              {/* <NavLink to="/phrases" className="border-b-2">
                 Phrases
               </NavLink>
               <NavLink to="/builder" className="border-b-2">
@@ -60,8 +60,8 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/about" className="border-b-2">
                 About
-              </NavLink>
-              <NavLink to="/contact" className="border-b-2">
+              </NavLink> */}
+              <NavLink to="/contact" className="border-b-2 border-b-dark">
                 Contact
               </NavLink>
             </motion.div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
-const Search = ({ onChange, onErase }) => {
+const Search = ({ onChange, onErase, mobileView }) => {
   const [value, setValue] = useState("");
 
   const handleCloseButton = () => {
@@ -15,7 +15,7 @@ const Search = ({ onChange, onErase }) => {
   };
 
   return (
-    <div className="relative bg-white-custom flex items-center rounded-full">
+    <div className={`bg-white-custom flex items-center rounded-full ${mobileView ? `fixed` : `relative`}`}>
       <FaSearch className="absolute left-2 transform rotate-90" color="rgba(0,0,0,0.2)" size="30px" />
       <input
         placeholder="Search a glyph..."
