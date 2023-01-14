@@ -1,8 +1,10 @@
 import { React } from "react";
 
-const Theme = ({ theme, onClick }) => {
+const Theme = ({ theme, onClick, highlight }) => {
   return (
-    <p onClick={onClick} className="bg-theme-background rounded-full px-5 py-2 hover:cursor-pointer">
+    <p
+      onClick={onClick}
+      className={`${highlight && `bg-theme-background`} rounded-full px-5 py-2 hover:cursor-pointer `}>
       {theme.name}
     </p>
   );

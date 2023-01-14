@@ -62,11 +62,16 @@ const Glyphs = () => {
               <div className=" mt-2 flex gap-2 flex-wrap justify-center font-semibold uppercase">
                 <p
                   onClick={() => setSelectedTheme(null)}
-                  className="bg-theme-background rounded-full px-5 py-2 hover:cursor-pointer">
+                  className={`${!selectedTheme && `bg-theme-background `}rounded-full px-5 py-2 hover:cursor-pointer`}>
                   All
                 </p>
                 {themes?.map((theme, key) => (
-                  <Theme onClick={() => setSelectedTheme(theme)} theme={theme} key={key} />
+                  <Theme
+                    onClick={() => setSelectedTheme(theme)}
+                    theme={theme}
+                    key={key}
+                    highlight={theme === selectedTheme}
+                  />
                 ))}
               </div>
             </div>
@@ -100,11 +105,16 @@ const Glyphs = () => {
               <div className="flex gap-8 flex-wrap justify-center font-semibold uppercase">
                 <p
                   onClick={() => setSelectedTheme(null)}
-                  className="bg-theme-background rounded-full px-5 py-2 hover:cursor-pointer">
+                  className={`${!selectedTheme && `bg-theme-background `}rounded-full px-5 py-2 hover:cursor-pointer`}>
                   All
                 </p>
                 {themes?.map((theme, key) => (
-                  <Theme onClick={() => setSelectedTheme(theme)} theme={theme} key={key} />
+                  <Theme
+                    onClick={() => setSelectedTheme(theme)}
+                    theme={theme}
+                    key={key}
+                    highlight={theme === selectedTheme}
+                  />
                 ))}
               </div>
               {isLoadingGlyphs ? (
