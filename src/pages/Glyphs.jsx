@@ -100,7 +100,7 @@ const Glyphs = () => {
             )}
           </div>
           <div>
-            <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-col items-center gap-8 ">
               <Search mobileView onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
               <div className="mt-20 px-6 flex gap-4 flex-wrap justify-center font-semibold uppercase">
                 <p
@@ -122,7 +122,7 @@ const Glyphs = () => {
                   <img src="/assets/Spinner-1.4s-200px.svg" />
                 </div>
               ) : (
-                <div className="grid grid-cols-3 gap-12 justify-center py-2 ">
+                <div className="grid grid-cols-3 gap-4">
                   {filteredGlyphs?.map((glyph, key) => (
                     <Card mobileView onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
                   ))}
