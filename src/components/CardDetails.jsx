@@ -74,7 +74,7 @@ const CardDetails = ({ glyph, themeId, showModal }) => {
           </motion.div>
         </>
       ) : (
-        <div className="absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen h-screen flex justify-center items-center bg-black bg-opacity-70 ">
+        <div className="mt-16 absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-screen overflow-hidden w-screen flex justify-center items-center bg-black bg-opacity-80">
           <div ref={ref} className="flex flex-col items-center justify-center gap-4 relative ">
             <p className="first-letter:uppercase font-semibold text-3xl">
               {valyrianTranslation === "" ? "?" : valyrianTranslation}

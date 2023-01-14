@@ -7,7 +7,7 @@ const Card = ({ glyph, onClick }) => {
   return (
     <article
       onClick={onClick}
-      className="bg-white-custom w-[160px] h-[240px]  text-dark rounded-2xl shadow-xl flex flex-col items-center justify-between py-4 hover:cursor-pointer hover:scale-[1.02] transition duration-100">
+      className="text-center bg-white-custom w-[160px] h-[240px]  text-dark rounded-2xl shadow-xl flex flex-col items-center justify-between py-4 hover:cursor-pointer hover:scale-[1.02] transition duration-100">
       <p className="first-letter:uppercase">{glyph.valyrianTranslation === "" ? "?" : glyph.valyrianTranslation}</p>
       <img
         className="h-24 lg:h-32 object-scale-down"
