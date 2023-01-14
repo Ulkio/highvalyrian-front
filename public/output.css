@@ -749,12 +749,16 @@ video {
   align-self: center;
 }
 
-.overflow-hidden {
-  overflow: hidden;
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
-.overflow-scroll {
-  overflow: scroll;
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .rounded-2xl {
@@ -922,6 +926,14 @@ video {
 
 .duration-100 {
   transition-duration: 100ms;
+}
+
+.scrollbar.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.scrollbar.overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 .scrollbar-thin {

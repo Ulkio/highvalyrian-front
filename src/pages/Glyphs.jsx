@@ -34,7 +34,6 @@ const Glyphs = () => {
   }, [glyphs, searchValue, selectedTheme]);
 
   useEffect(() => {
-    console.log(modalOnScreen);
     if (!modalOnScreen) {
       setSelectedGlyph(null);
     }
@@ -46,8 +45,8 @@ const Glyphs = () => {
 
   return (
     <section
-      className={`pt-4 flex justify-between  h-full lg:h-[calc(100vh_-_5rem)] lg:bg-gradient-primary ${
-        modalOnScreen === true ? `overflow-hidden` : `overflow-scroll`
+      className={`pt-4 flex overflow-x-hidden justify-between  h-screen lg:h-[calc(100vh_-_5rem)] lg:bg-gradient-primary ${
+        modalOnScreen === true ? `overflow-y-hidden` : `overflow-y-scroll`
       }`}>
       {/* DESKTOP  */}
       {isAboveMediumScreens ? (
@@ -95,7 +94,7 @@ const Glyphs = () => {
               />
             )}
           </div>
-          <div className="w-full">
+          <div className="">
             <div className="flex flex-col items-center gap-8">
               <Search onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
               <div className="flex gap-8 flex-wrap justify-center font-semibold uppercase">
