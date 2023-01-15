@@ -6,11 +6,12 @@ import Builder from "@p/Builder";
 import Glyphs from "@p/Glyphs";
 import Contact from "@p/Contact";
 import NotFound from "@p/NotFound";
-import useMediaQuery from "./hooks/useMediaQuery";
+import { useMediaQuery } from "react-responsive";
+
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const isAboveMediumScreens = useMediaQuery("(min-width:1024px)");
+  const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
 
   return (
     <div className="app">

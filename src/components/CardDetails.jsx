@@ -2,13 +2,14 @@ import { React, useEffect, useState, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getTheme } from "../api";
 import { motion } from "framer-motion";
-import useMediaQuery from "../hooks/useMediaQuery";
+import { useMediaQuery } from "react-responsive";
 
 const BASE_URL =
   process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://highvalyrianapi.onrender.com";
 
 const CardDetails = ({ glyph, themeId, showModal }) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width:1024px)");
+  const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
+
   const { valyrianTranslation, englishTranslation, prefix, imagePath, info, example } = glyph;
   const [glyphThemeId, setGlyphThemeId] = useState(themeId);
 
@@ -25,18 +26,17 @@ const CardDetails = ({ glyph, themeId, showModal }) => {
   const ref = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      showModal(false);
-    } else {
-      showModal(true);
+    if (!isAboveMediumScreens) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        showModal(false);
+      } else {
+        showModal(true);
+      }
     }
   };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, true);
-    };
   }, []);
 
   return (

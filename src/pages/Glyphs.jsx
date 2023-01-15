@@ -5,10 +5,10 @@ import Card from "@c/Card";
 import CardDetails from "@c/CardDetails";
 import { getGlyphs, getThemes } from "../api";
 import { useQuery } from "@tanstack/react-query";
-import useMediaQuery from "../hooks/useMediaQuery";
+import { useMediaQuery } from "react-responsive";
 
 const Glyphs = () => {
-  const isAboveMediumScreens = useMediaQuery("(min-width:1024px)");
+  const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
   const [selectedGlyph, setSelectedGlyph] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -40,7 +40,7 @@ const Glyphs = () => {
   }, [modalOnScreen]);
 
   useEffect(() => {
-    if (selectedGlyph) setModalOnScreen(true);
+    if (selectedGlyph && !isAboveMediumScreens) setModalOnScreen(true);
   }, [selectedGlyph]);
 
   return (

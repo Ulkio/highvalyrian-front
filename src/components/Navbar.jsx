@@ -1,11 +1,11 @@
 import { React, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import useMediaQuery from "../hooks/useMediaQuery";
+import { useMediaQuery } from "react-responsive";
 import { FaBars } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const isAboveMediumScreens = useMediaQuery("(min-width:1024px)");
+  const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
   const pathname = useLocation().pathname;
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
