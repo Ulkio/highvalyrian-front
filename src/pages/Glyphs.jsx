@@ -34,7 +34,7 @@ const Glyphs = () => {
   }, [glyphs, searchValue, selectedTheme]);
 
   useEffect(() => {
-    if (!modalOnScreen) {
+    if (!modalOnScreen && selectedGlyph) {
       setSelectedGlyph(null);
     }
   }, [modalOnScreen]);
@@ -53,18 +53,24 @@ const Glyphs = () => {
         <>
           <div className="w-full ml-24 basis-6/12">
             <div className="h-full flex justify-center items-center">
-              {selectedGlyph && <CardDetails glyph={selectedGlyph} themeId={selectedGlyph.classId} />}
+              {selectedGlyph && (
+                <CardDetails showModal={() => null} glyph={selectedGlyph} themeId={selectedGlyph.classId} />
+              )}
             </div>
           </div>
           <div className="w-full basis-5/12 scrollbar-track-black ">
             <div className="mx-20 flex flex-col items-center ">
               <Search onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
               <div className=" my-2 flex gap-2 flex-wrap justify-center font-semibold uppercase">
-                <p
-                  onClick={() => setSelectedTheme(null)}
-                  className={`${!selectedTheme && `bg-theme-background `}rounded-full px-5 py-2 hover:cursor-pointer`}>
-                  All
-                </p>
+                {!isLoadingThemes && (
+                  <p
+                    onClick={() => setSelectedTheme(null)}
+                    className={`${
+                      !selectedTheme && `bg-theme-background `
+                    }rounded-full px-5 py-2 hover:cursor-pointer`}>
+                    All
+                  </p>
+                )}
                 {themes?.map((theme, key) => (
                   <Theme
                     onClick={() => setSelectedTheme(theme)}
@@ -76,7 +82,8 @@ const Glyphs = () => {
               </div>
             </div>
             {isLoadingGlyphs ? (
-              <div className="h-64 self-center flex justify-center items-center text-center">
+              <div className="h-64 self-center flex flex-col justify-center items-center ">
+                <h4>First loading may take a few seconds. Please wait :-)</h4>
                 <img src="/assets/Spinner-1.4s-200px.svg" />
               </div>
             ) : (
@@ -103,11 +110,15 @@ const Glyphs = () => {
             <div className="flex flex-col items-center gap-8 ">
               <Search mobileView onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
               <div className="mt-20 px-6 flex gap-4 flex-wrap justify-center font-semibold uppercase">
-                <p
-                  onClick={() => setSelectedTheme(null)}
-                  className={`${!selectedTheme && `bg-theme-background `}rounded-full px-5 py-2 hover:cursor-pointer`}>
-                  All
-                </p>
+                {!isLoadingThemes && (
+                  <p
+                    onClick={() => setSelectedTheme(null)}
+                    className={`${
+                      !selectedTheme && `bg-theme-background `
+                    }rounded-full px-5 py-2 hover:cursor-pointer`}>
+                    All
+                  </p>
+                )}
                 {themes?.map((theme, key) => (
                   <Theme
                     onClick={() => setSelectedTheme(theme)}
@@ -118,7 +129,8 @@ const Glyphs = () => {
                 ))}
               </div>
               {isLoadingGlyphs ? (
-                <div className="h-64 self-center flex justify-center items-center text-center">
+                <div className="flex flex-col">
+                  <h4>First loading may take a few seconds. Please wait :-)</h4>
                   <img src="/assets/Spinner-1.4s-200px.svg" />
                 </div>
               ) : (
