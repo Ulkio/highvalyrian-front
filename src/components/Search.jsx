@@ -15,8 +15,11 @@ const Search = ({ onChange, onErase, mobileView }) => {
   };
 
   return (
-    <div className={`bg-white-custom flex items-center rounded-full ${mobileView ? `fixed` : `relative`}`}>
-      <FaSearch className="absolute left-2 transform rotate-90" color="rgba(0,0,0,0.2)" size="30px" />
+    <div
+      className={`border-split-red border-4 bg-white-custom flex items-center rounded-full relative ${
+        mobileView && `mb-16 sticky top-16 z-50`
+      }`}>
+      <FaSearch className={`absolute left-2 transform rotate-90`} color="rgba(0,0,0,0.2)" size="30px" />
       <input
         placeholder="Search a glyph..."
         type="text"

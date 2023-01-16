@@ -9,6 +9,7 @@ import { useMediaQuery } from "react-responsive";
 
 const Glyphs = () => {
   const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
+  const isAboveMobileScreens = useMediaQuery({ query: `(min-width:768px)` });
   const [selectedGlyph, setSelectedGlyph] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -45,7 +46,7 @@ const Glyphs = () => {
 
   return (
     <section
-      className={`pt-4 flex overflow-x-hidden justify-between h-screen lg:h-[calc(100vh_-_5rem)] lg:bg-gradient-primary ${
+      className={`pt-4 flex overflow-x-hidden justify-center h-screen lg:h-[calc(100vh_-_5rem)] lg:bg-gradient-primary ${
         modalOnScreen === true ? `overflow-y-hidden` : `overflow-y-scroll`
       }`}>
       {/* DESKTOP  */}
@@ -107,9 +108,9 @@ const Glyphs = () => {
             )}
           </div>
           <div>
-            <div className="flex flex-col items-center gap-8 ">
+            <div className="flex flex-col items-center gap-4">
               <Search mobileView onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
-              <div className="mt-20 px-6 flex gap-4 flex-wrap justify-center font-semibold uppercase">
+              <div className="px-6 flex gap-4 flex-wrap justify-center font-semibold uppercase">
                 {!isLoadingThemes && (
                   <p
                     onClick={() => setSelectedTheme(null)}
@@ -134,7 +135,7 @@ const Glyphs = () => {
                   <img src="/assets/Spinner-1.4s-200px.svg" />
                 </div>
               ) : (
-                <div className="grid grid-cols-3 gap-4">
+                <div className={`grid ${isAboveMobileScreens ? `grid-cols-3` : `grid-cols-2`} gap-8`}>
                   {filteredGlyphs?.map((glyph, key) => (
                     <Card mobileView onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
                   ))}

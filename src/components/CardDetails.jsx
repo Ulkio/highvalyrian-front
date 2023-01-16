@@ -27,11 +27,12 @@ const CardDetails = ({ glyph, themeId, showModal }) => {
 
   const handleClickOutside = (event) => {
     if (!isAboveMediumScreens) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        showModal(false);
-      } else {
-        showModal(true);
-      }
+      // if (ref.current && !ref.current.contains(event.target)) {
+      //   showModal(false);
+      // } else {
+      //   showModal(true);
+      // }
+      showModal(false);
     }
   };
 
