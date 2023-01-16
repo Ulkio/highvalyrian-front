@@ -15,11 +15,8 @@ const Search = ({ onChange, onErase, mobileView }) => {
   };
 
   return (
-    <div
-      className={`border-split-red border-4 bg-white-custom flex items-center rounded-full relative ${
-        mobileView && `mb-16 sticky top-16 z-50`
-      }`}>
-      <FaSearch className={`absolute left-2 transform rotate-90`} color="rgba(0,0,0,0.2)" size="30px" />
+    <div className={` bg-white-custom flex items-center rounded-full  `}>
+      <FaSearch className={`ml-2 transform rotate-90`} color="rgba(0,0,0,0.2)" size="30px" />
       <input
         placeholder="Search a glyph..."
         type="text"
@@ -27,14 +24,10 @@ const Search = ({ onChange, onErase, mobileView }) => {
         id="search"
         value={value}
         onChange={handleChange}
-        className="w-full p-4 font-semibold text-dark rounded-full py-4 px-12 focus:outline-none focus:border-sky-500 focus:dark focus:ring-4 sm:text-md"
+        autoComplete="off"
+        className={`w-full ${mobileView ? `p-2` : `p-4`} font-semibold text-dark  focus:outline-none  sm:text-md`}
       />
-      <MdClose
-        onClick={handleCloseButton}
-        className="hover:cursor-pointer absolute right-2"
-        color="rgba(0,0,0,0.2)"
-        size="30px"
-      />
+      <MdClose onClick={handleCloseButton} className="mr-2 hover:cursor-pointer " color="rgba(0,0,0,0.2)" size="30px" />
     </div>
   );
 };
