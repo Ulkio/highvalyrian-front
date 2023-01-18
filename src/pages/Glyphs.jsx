@@ -88,7 +88,7 @@ const Glyphs = () => {
                 <img src="/assets/Spinner-1.4s-200px.svg" />
               </div>
             ) : (
-              <div className="flex flex-wrap gap-6 justify-center py-2 h-[70vh] mr-4 scrollbar-thin scrollbar-thumb-black scrollbar-track-red-900">
+              <div className="flex flex-wrap gap-6 justify-center py-2 h-[70vh] mr-4 scrollbar scrollbar-thumb-black scrollbar-track-red-900">
                 {filteredGlyphs?.map((glyph, key) => (
                   <Card onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
                 ))}
