@@ -17,7 +17,7 @@ function App() {
     <div className="app">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Glyphs />} />
+        <Route exact path="/" element={<Glyphs />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/builder" element={<Builder />} />
         <Route path="/about" element={<About />} />
