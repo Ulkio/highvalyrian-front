@@ -46,7 +46,7 @@ const Glyphs = () => {
 
   return (
     <section
-      className={`pt-4 flex overflow-x-hidden justify-center h-screen lg:h-[calc(100vh_-_5rem)] lg:bg-gradient-primary ${
+      className={`mt-16 pt-4 flex overflow-x-hidden justify-center h-screen lg:bg-gradient-primary ${
         modalOnScreen === true ? `overflow-y-hidden` : `overflow-y-scroll`
       }`}>
       {/* DESKTOP  */}

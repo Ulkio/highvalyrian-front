@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <nav className="lg:bg-navbar-dark bg-split-red w-full sticky top-0 ">
+    <nav className="lg:bg-navbar-dark bg-split-red w-full fixed top-0 ">
       <div className="flex justify-between items-center  h-16 lg:px-24 px-6">
         <h1 className="z-100 font-bold lg:text-lg">{<NavLink to="/">HIGH VALYRIAN GLYPHS</NavLink>}</h1>
         {isAboveMediumScreens ? (
