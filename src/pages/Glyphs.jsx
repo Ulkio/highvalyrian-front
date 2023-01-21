@@ -46,7 +46,7 @@ const Glyphs = () => {
 
   return (
     <section
-      className={`mt-16 pt-4 flex overflow-x-hidden justify-center h-screen lg:bg-gradient-primary ${
+      className={`mt-16 pt-4 flex scrollbar-none overflow-x-hidden justify-center h-screen lg:bg-gradient-primary ${
         modalOnScreen === true ? `overflow-y-hidden` : `overflow-y-scroll`
       }`}>
       {/* DESKTOP  */}
@@ -60,15 +60,13 @@ const Glyphs = () => {
             </div>
           </div>
           <div className="w-full basis-5/12 ">
-            <div className="mx-20 flex flex-col items-center ">
+            <div className="ml-20 flex flex-col items-center ">
               <Search onChange={(e) => setSearchValue(e.target.value)} onErase={() => setSearchValue("")} />
               <div className=" my-2 flex gap-2 flex-wrap justify-center font-semibold uppercase">
                 {!isLoadingThemes && (
                   <p
                     onClick={() => setSelectedTheme(null)}
-                    className={`${
-                      !selectedTheme && `bg-theme-background `
-                    }rounded-full px-5 py-2 hover:cursor-pointer`}>
+                    className={`${!selectedTheme && `bg-theme-background `} px-5 py-2 hover:cursor-pointer`}>
                     All
                   </p>
                 )}
@@ -114,9 +112,7 @@ const Glyphs = () => {
                 {!isLoadingThemes && (
                   <p
                     onClick={() => setSelectedTheme(null)}
-                    className={`${
-                      !selectedTheme && `bg-theme-background `
-                    }rounded-full px-5 py-2 hover:cursor-pointer`}>
+                    className={`${!selectedTheme && `bg-theme-background `} px-5 py-2 hover:cursor-pointer`}>
                     All
                   </p>
                 )}

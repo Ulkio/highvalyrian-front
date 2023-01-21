@@ -57,7 +57,7 @@ const CardDetails = ({ glyph, themeId, showModal }) => {
             <p className="first-letter:uppercase font-semibold text-3xl">
               {valyrianTranslation === "" ? "?" : valyrianTranslation}
             </p>
-            <div className="shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] bg-white-custom w-[320px] h-[480px] text-dark rounded-2xl  flex flex-col justify-evenly p-4 ">
+            <div className="shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] bg-white-custom w-[320px] h-[480px] text-dark  flex flex-col justify-evenly p-4 ">
               <img
                 className="self-center w-[300px] h-[300px] object-scale-down"
                 src={`${BASE_URL}/assets/${imagePath}`}
@@ -82,7 +82,7 @@ const CardDetails = ({ glyph, themeId, showModal }) => {
             <p className="first-letter:uppercase font-semibold text-3xl">
               {valyrianTranslation === "" ? "?" : valyrianTranslation}
             </p>
-            <div className="bg-white-custom w-[240px] h-[360px] text-dark rounded-2xl shadow-xl flex flex-col justify-evenly py-4 ">
+            <div className="bg-white-custom w-[240px] h-[360px] text-dark shadow-xl flex flex-col justify-evenly py-4 ">
               <img
                 className="self-center w-[240px] h-[240px] object-scale-down"
                 src={`${BASE_URL}/assets/${imagePath}`}
