@@ -4,9 +4,9 @@ import { getTheme } from "../api";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
-const BASE_URL = "http://localhost:3001";
-// const BASE_URL =
-//   process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://highvalyrianapi.onrender.com";
+// const BASE_URL = "http://localhost:3001";
+const BASE_URL =
+  process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://highvalyrianapi.onrender.com";
 
 const CardDetails = ({ glyph, showModal, type }) => {
   const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
