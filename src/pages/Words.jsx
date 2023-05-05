@@ -1,49 +1,54 @@
-import { React, useState, useMemo, useRef, useEffect } from "react";
+import { React, useState, useMemo, useEffect } from "react";
 import Search from "@c/Search";
 import Theme from "@c/Theme";
 import Card from "@c/Card";
 import CardDetails from "@c/CardDetails";
-import { getGlyphs, getThemes } from "../api";
+import { getWords, getThemes } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
 
-const Glyphs = () => {
+const Words = () => {
   const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
   const isAboveMobileScreens = useMediaQuery({ query: `(min-width:768px)` });
-  const [selectedGlyph, setSelectedGlyph] = useState(null);
+  const [selectedWord, setSelectedWord] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [modalOnScreen, setModalOnScreen] = useState(false);
 
-  const { isLoading: isLoadingGlyphs, data: glyphs } = useQuery({
-    queryKey: ["glyphs"],
-    queryFn: getGlyphs,
+  const { isLoading: isLoadingWords, data: words } = useQuery({
+    queryKey: ["words"],
+    queryFn: getWords,
+    staleTime: 60 * 1000,
   });
   const { isLoading: isLoadingThemes, data: themes } = useQuery({
     queryKey: ["themes"],
     queryFn: getThemes,
+    staleTime: 60 * 1000,
   });
 
-  const filteredGlyphs = useMemo(() => {
-    if (!glyphs) return;
-    return glyphs
+  const filteredWords = useMemo(() => {
+    if (!words) return;
+    return words
       .filter(
-        (gl) =>
-          searchValue.toLowerCase() === "" || gl.englishTranslation.toLowerCase().includes(searchValue.toLowerCase())
+        (word) =>
+          searchValue.toLowerCase() === "" ||
+          word.englishTranslation.toLowerCase().includes(searchValue.toLowerCase()) ||
+          word.valyrianTranslation.toLowerCase().includes(searchValue.toLowerCase())
       )
-      .filter((gl) => selectedTheme === null || gl.classId?.includes(selectedTheme?._id));
-  }, [glyphs, searchValue, selectedTheme]);
+      .filter((word) => selectedTheme === null || word.classId?.includes(selectedTheme?._id));
+  }, [words, searchValue, selectedTheme]);
 
   useEffect(() => {
-    if (!modalOnScreen && selectedGlyph) {
-      setSelectedGlyph(null);
+    if (!modalOnScreen && selectedWord) {
+      setSelectedWord(null);
     }
   }, [modalOnScreen]);
 
   useEffect(() => {
-    if (selectedGlyph && !isAboveMediumScreens) setModalOnScreen(true);
-  }, [selectedGlyph]);
+    if (selectedWord && !isAboveMediumScreens) setModalOnScreen(true);
+  }, [selectedWord]);
 
+  if (isLoadingWords) return <h1>Loading</h1>;
   return (
     <section
       className={`mt-16 pt-4 flex scrollbar-none overflow-x-hidden justify-center h-screen lg:bg-gradient-primary ${
@@ -54,8 +59,8 @@ const Glyphs = () => {
         <>
           <div className="w-full ml-24 basis-6/12">
             <div className="h-full flex justify-center items-center">
-              {selectedGlyph && (
-                <CardDetails showModal={() => null} glyph={selectedGlyph} themeId={selectedGlyph.classId} />
+              {selectedWord && (
+                <CardDetails showModal={() => null} glyph={selectedWord} themeId={selectedWord.classId} type="words" />
               )}
             </div>
           </div>
@@ -80,15 +85,15 @@ const Glyphs = () => {
                 ))}
               </div>
             </div>
-            {isLoadingGlyphs ? (
+            {isLoadingWords ? (
               <div className="h-64 self-center flex flex-col justify-center items-center ">
                 <h4>First loading may take a few seconds. Please wait :-)</h4>
                 <img src="/assets/Spinner-1.4s-200px.svg" />
               </div>
             ) : (
-              <div className="flex flex-wrap gap-6 justify-center py-2 h-[70vh] mr-4 scrollbar scrollbar-thumb-black scrollbar-track-red-900">
-                {filteredGlyphs?.map((glyph, key) => (
-                  <Card onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
+              <div className="flex flex-wrap gap-2 justify-center py-2 h-[60vh] mr-4 scrollbar scrollbar-thumb-black scrollbar-track-red-900">
+                {filteredWords?.map((word, key) => (
+                  <Card onClick={() => setSelectedWord(word)} glyph={word} key={key} type="words" />
                 ))}
               </div>
             )}
@@ -97,11 +102,12 @@ const Glyphs = () => {
       ) : (
         <>
           <div className="h-full flex justify-center items-center">
-            {selectedGlyph && (
+            {selectedWord && (
               <CardDetails
                 showModal={(e) => setModalOnScreen(e)}
-                glyph={selectedGlyph}
-                themeId={selectedGlyph.classId}
+                glyph={selectedWord}
+                themeId={selectedWord.classId}
+                type="words"
               />
             )}
           </div>
@@ -125,7 +131,7 @@ const Glyphs = () => {
                   />
                 ))}
               </div>
-              {isLoadingGlyphs ? (
+              {isLoadingWords ? (
                 <div className="flex flex-col">
                   <h4>First loading may take a few seconds. Please wait :-)</h4>
                   <img src="/assets/Spinner-1.4s-200px.svg" />
@@ -135,8 +141,8 @@ const Glyphs = () => {
                   className={`border-t-[1px] py-4 border-split-red w-full  scrollbar h-[60vh] grid ${
                     isAboveMobileScreens ? `grid-cols-3` : `grid-cols-2`
                   } gap-6 place-items-center`}>
-                  {filteredGlyphs?.map((glyph, key) => (
-                    <Card mobileView onClick={() => setSelectedGlyph(glyph)} glyph={glyph} key={key} />
+                  {filteredWords?.map((word, key) => (
+                    <Card mobileView onClick={() => setSelectedWord(word)} glyph={word} key={key} type="words" />
                   ))}
                 </div>
               )}
@@ -147,4 +153,4 @@ const Glyphs = () => {
     </section>
   );
 };
-export default Glyphs;
+export default Words;

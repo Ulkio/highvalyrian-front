@@ -16,7 +16,15 @@ const Navbar = () => {
         {isAboveMediumScreens ? (
           <div className="flex justify-between gap-16 text-sm font-semibold">
             <NavLink to="/" className={`text-white ${pathname === "/" ? "border-b-[1px] pb-2" : ""}`}>
-              Glyphs
+              Words
+            </NavLink>
+            <NavLink
+              to="/characters"
+              className={`text-white ${pathname === "/characters" ? "border-b-[1px] pb-2" : ""}`}>
+              Characters
+            </NavLink>
+            <NavLink to="/numbers" className={`text-white ${pathname === "/numbers" ? "border-b-[1px] pb-2" : ""}`}>
+              Numbers
             </NavLink>
             {/* <NavLink to="/phrases" className="text-white">
               Phrases

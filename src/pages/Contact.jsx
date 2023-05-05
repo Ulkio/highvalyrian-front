@@ -43,7 +43,7 @@ const Contact = () => {
         action="https://formspree.io/f/mzbqzaer"
         onSubmit={handleSubmit}>
         <motion.input
-          className="bg-white-custom rounded-full p-4 text-dark focus:outline-none"
+          className="bg-white-custom rounded-sm p-4 text-dark focus:outline-none"
           type="text"
           name="name"
           id="name"
@@ -52,7 +52,7 @@ const Contact = () => {
         />
         <ValidationError prefix="Name" field="name" errors={state.errors} />
         <motion.input
-          className="bg-white-custom rounded-full p-4 text-dark focus:outline-none"
+          className="bg-white-custom rounded-sm p-4 text-dark focus:outline-none"
           type="email"
           name="email"
           id="email"
@@ -61,7 +61,7 @@ const Contact = () => {
         />
         <ValidationError prefix="Email" field="email" errors={state.errors} />
         <motion.textarea
-          className="bg-white-custom rounded-3xl p-4 text-dark focus:outline-none"
+          className="bg-white-custom rounded-sm p-4 text-dark focus:outline-none"
           name="message"
           id=""
           cols="30"
@@ -73,7 +73,7 @@ const Contact = () => {
         <ValidationError prefix="Message" field="message" errors={state.errors} />
 
         <motion.button
-          className="self-center w-1/3 border-split-red border-2 py-4 font-semibold text-2xl rounded-full bg-split-red hover:scale-105 transition duration-200"
+          className="self-center w-1/3 border-split-red border-2 py-4 font-semibold text-2xl rounded-sm bg-split-red hover:scale-105 transition duration-200"
           type="submit"
           variants={button}>
           SEND
@@ -83,7 +83,7 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             variants={sentPopup}
-            className={` fixed bottom-0 self-center  border-split-red border-2 p-4 font-semibold text-lg rounded-full bg-split-red`}>
+            className={` fixed bottom-0 self-center  border-split-red border-2 p-4 font-semibold text-lg rounded-sm bg-split-red`}>
             Message sent !
           </motion.p>
         )}
@@ -92,7 +92,7 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             variants={sentPopup}
-            className={` fixed bottom-0 self-center  border-split-red border-2 p-4 font-semibold text-lg rounded-full bg-split-red`}>
+            className={` fixed bottom-0 self-center  border-split-red border-2 p-4 font-semibold text-lg rounded-sm bg-split-red`}>
             Error !
           </motion.p>
         )}

@@ -3,7 +3,9 @@ import Footer from "@c/Footer";
 import About from "@p/About";
 import Phrases from "@p/Phrases";
 import Builder from "@p/Builder";
-import Glyphs from "@p/Glyphs";
+import Words from "@p/Words";
+import Characters from "@p/Characters";
+import Numbers from "@p/Numbers";
 import Contact from "@p/Contact";
 import NotFound from "@p/NotFound";
 import { useMediaQuery } from "react-responsive";
@@ -17,7 +19,9 @@ function App() {
     <div className="app">
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Glyphs />} />
+        <Route exact path="/" element={<Words />} />
+        <Route exact path="/characters" element={<Characters />} />
+        <Route exact path="/numbers" element={<Numbers />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/builder" element={<Builder />} />
         <Route path="/about" element={<About />} />
