@@ -10,7 +10,16 @@ const Search = ({ onChange, onErase, mobileView }) => {
     onErase();
   };
   const handleChange = (e) => {
-    setValue(e.target.value);
+    const value = e.target.value;
+    const newValue = value
+      .replace(/ii/g, "ī")
+      .replace(/ee/g, "ē")
+      .replace(/aa/g, "ā")
+      .replace(/oo/g, "ō")
+      .replace(/yy/g, "ȳ")
+      .replace(/uu/g, "ū");
+
+    setValue(newValue);
     onChange(e);
   };
 
