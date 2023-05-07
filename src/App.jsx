@@ -25,6 +25,7 @@ function App() {
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/builder" element={<Builder />} />
         <Route path="/about" element={<About />} />
+        <Route path="/builder" element={<Builder />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

@@ -7,7 +7,7 @@ const Card = ({ glyph, onClick, mobileView, type }) => {
   return (
     <article
       onClick={onClick}
-      className={`select-none ${
+      className={`${
         mobileView ? `w-[120px] h-[180px]` : `w-[160px] h-[240px]`
       }  text-center bg-white-custom  text-dark  flex flex-col items-center justify-between py-4 
          hover:cursor-pointer hover:scale-[1.02] transition duration-100`}>
