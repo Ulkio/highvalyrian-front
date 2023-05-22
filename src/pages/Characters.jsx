@@ -32,7 +32,7 @@ const Characters = () => {
     if (selectedCharacter && !isAboveMediumScreens) setModalOnScreen(true);
   }, [selectedCharacter]);
 
-  if (isLoadingCharacters) return <h1>Loading</h1>;
+  if (isLoadingCharacters) return <h4 className="text-white">Loading</h4>;
   return (
     <section
       className={` flex scrollbar-none overflow-x-hidden items-center justify-center h-screen lg:bg-gradient-primary ${
@@ -49,7 +49,6 @@ const Characters = () => {
           <div className="w-full basis-5/12 ">
             {isLoadingCharacters ? (
               <div className="h-64 self-center flex flex-col justify-center items-center ">
-                <h4>First loading may take a few seconds. Please wait :-)</h4>
                 <img src="/assets/Spinner-1.4s-200px.svg" />
               </div>
             ) : (
@@ -72,7 +71,6 @@ const Characters = () => {
             <div className="flex flex-col items-center gap-4 overflow-hidden scrollbar-none">
               {isLoadingCharacters ? (
                 <div className="flex flex-col">
-                  <h4>First loading may take a few seconds. Please wait :-)</h4>
                   <img src="/assets/Spinner-1.4s-200px.svg" />
                 </div>
               ) : (

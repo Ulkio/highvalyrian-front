@@ -26,7 +26,6 @@ const Builder = () => {
 
   const handleClickGlyph = (gl) => {
     setBuiltWord((prev) => [...prev, gl]);
-    console.log(builtWord);
   };
 
   const glyphs = useMemo(() => {
@@ -49,11 +48,11 @@ const Builder = () => {
               <img
                 className="w-8 h-8 object-scale-down invert"
                 src={`${BASE_URL}/assets/${
-                  gl.classId === "645567522c371064ed627260"
-                    ? "words"
+                  gl.classId === "645567522c371064ed627267"
+                    ? "numbers"
                     : gl.classId === "645567522c371064ed627268"
                     ? "characters"
-                    : "numbers"
+                    : "words"
                 }/${gl.imagePath}`}
                 alt=""
               />
@@ -75,11 +74,11 @@ const Builder = () => {
               <img
                 className="w-16 h-16 object-scale-down invert"
                 src={`${BASE_URL}/assets/${
-                  gl.classId === "645567522c371064ed627260"
-                    ? "words"
+                  gl.classId === "645567522c371064ed627267"
+                    ? "numbers"
                     : gl.classId === "645567522c371064ed627268"
                     ? "characters"
-                    : "numbers"
+                    : "words"
                 }/${gl.imagePath}`}
               />
             );

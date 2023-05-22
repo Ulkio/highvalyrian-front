@@ -65,7 +65,13 @@ const Words = () => {
     setSearchValue(newValue);
   };
 
-  if (isLoadingWords) return <h1>Loading</h1>;
+  if (isLoadingWords)
+    return (
+      <h4 className="text-white">
+        Loading. Please refresh the page if the glyphs are not showing up after a few seconds. The website is currently
+        hosted for free, so the database is put to sleep if there are no queries for a while.
+      </h4>
+    );
   return (
     <section
       className={`mt-16 pt-4 flex scrollbar-none overflow-x-hidden justify-center h-screen lg:bg-gradient-primary ${
@@ -93,19 +99,20 @@ const Words = () => {
                     All
                   </p>
                 )}
-                {themes?.map((theme, key) => (
-                  <Theme
-                    onClick={() => setSelectedTheme(theme)}
-                    theme={theme}
-                    key={key}
-                    highlight={theme === selectedTheme}
-                  />
-                ))}
+                {themes
+                  ?.filter((theme) => theme.name !== "Alphabet" && theme.name !== "Number")
+                  .map((theme, key) => (
+                    <Theme
+                      onClick={() => setSelectedTheme(theme)}
+                      theme={theme}
+                      key={key}
+                      highlight={theme === selectedTheme}
+                    />
+                  ))}
               </div>
             </div>
             {isLoadingWords ? (
               <div className="h-64 self-center flex flex-col justify-center items-center ">
-                <h4>First loading may take a few seconds. Please wait :-)</h4>
                 <img src="/assets/Spinner-1.4s-200px.svg" />
               </div>
             ) : (
@@ -142,18 +149,19 @@ const Words = () => {
                     All
                   </p>
                 )}
-                {themes?.map((theme, key) => (
-                  <Theme
-                    onClick={() => setSelectedTheme(theme)}
-                    theme={theme}
-                    key={key}
-                    highlight={theme === selectedTheme}
-                  />
-                ))}
+                {themes
+                  ?.filter((theme) => theme.name !== "Alphabet" && theme.name !== "Number")
+                  .map((theme, key) => (
+                    <Theme
+                      onClick={() => setSelectedTheme(theme)}
+                      theme={theme}
+                      key={key}
+                      highlight={theme === selectedTheme}
+                    />
+                  ))}
               </div>
               {isLoadingWords ? (
                 <div className="flex flex-col">
-                  <h4>First loading may take a few seconds. Please wait :-)</h4>
                   <img src="/assets/Spinner-1.4s-200px.svg" />
                 </div>
               ) : (

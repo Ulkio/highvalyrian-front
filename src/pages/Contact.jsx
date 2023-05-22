@@ -34,12 +34,12 @@ const Contact = () => {
     },
   };
   return (
-    <div className="h-screen flex justify-center ">
+    <section className="mt-16 pt-4 h-screen flex justify-center items-center ">
       <motion.form
         initial="hidden"
         animate="show"
         variants={container}
-        className="w-1/2 flex flex-col justify-center gap-8"
+        className="md:w-[800px] flex flex-col justify-center gap-4 md:gap-8"
         action="https://formspree.io/f/mzbqzaer"
         onSubmit={handleSubmit}>
         <motion.input
@@ -61,11 +61,11 @@ const Contact = () => {
         />
         <ValidationError prefix="Email" field="email" errors={state.errors} />
         <motion.textarea
-          className="bg-white-custom rounded-sm p-4 text-dark focus:outline-none"
+          className="bg-white-custom rounded-sm p-4 text-dark focus:outline-none "
           name="message"
           id=""
           cols="30"
-          rows="10"
+          rows="5"
           maxLength={1000}
           placeholder="Your message"
           variants={input}
@@ -73,7 +73,7 @@ const Contact = () => {
         <ValidationError prefix="Message" field="message" errors={state.errors} />
 
         <motion.button
-          className="self-center w-1/3 border-split-red border-2 py-4 font-semibold text-2xl rounded-sm bg-split-red hover:scale-105 transition duration-200"
+          className="self-center w-full md:w-1/2 border-split-red border-2 py-2 md:py-4 font-semibold text-2xl rounded-sm bg-split-red hover:scale-105 transition duration-200 "
           type="submit"
           variants={button}>
           SEND
@@ -97,7 +97,7 @@ const Contact = () => {
           </motion.p>
         )}
       </motion.form>
-    </div>
+    </section>
   );
 };
 

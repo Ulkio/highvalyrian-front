@@ -18,10 +18,8 @@ const Navbar = () => {
             <NavLink to="/" className={`text-white ${pathname === "/" ? "border-b-[1px] pb-2" : ""}`}>
               Words
             </NavLink>
-            <NavLink
-              to="/characters"
-              className={`text-white ${pathname === "/characters" ? "border-b-[1px] pb-2" : ""}`}>
-              Characters
+            <NavLink to="/alphabet" className={`text-white ${pathname === "/alphabet" ? "border-b-[1px] pb-2" : ""}`}>
+              Alphabet
             </NavLink>
             <NavLink to="/numbers" className={`text-white ${pathname === "/numbers" ? "border-b-[1px] pb-2" : ""}`}>
               Numbers
@@ -57,22 +55,31 @@ const Navbar = () => {
                 hidden: { opacity: 0 },
                 visible: { opacity: 1 },
               }}
-              className={`z-50 rounded-b-3xl fixed right-0 h-64 w-64 uppercase font-semibold  text-white-custom bg-split-red flex flex-col justify-center items-end px-4 gap-8 ${
+              className={`z-auto rounded-b-3xl fixed right-0 h-full w-64 uppercase font-semibold  text-white-custom bg-split-red flex flex-col justify-evenly px-4  ${
                 !isMobileNavOpen && "hidden"
               }`}>
-              <NavLink to="/" className="">
-                Glyphs
+              <NavLink to="/" className={`text-white ${pathname === "/" ? "border-b-[1px] pb-2" : ""}`}>
+                Words
               </NavLink>
-              {/* <NavLink to="/phrases" className="border-b-2">
-                Phrases
+              <NavLink to="/alphabet" className={`text-white ${pathname === "/alphabet" ? "border-b-[1px] pb-2" : ""}`}>
+                Alphabet
               </NavLink>
-              <NavLink to="/builder" className="border-b-2">
-                Builder
+              <NavLink to="/numbers" className={`text-white ${pathname === "/numbers" ? "border-b-[1px] pb-2" : ""}`}>
+                Numbers
               </NavLink>
-              <NavLink to="/about" className="border-b-2">
-                About
-              </NavLink> */}
-              <NavLink to="/contact" className="">
+              <NavLink to="/builder" className={`text-white ${pathname === "/builder" ? "border-b-[1px] pb-2" : ""}`}>
+                Builder <span className="text-[10px]">(WIP)</span>
+              </NavLink>
+              {/* <NavLink to="/phrases" className="text-white">
+              Phrases
+            </NavLink>
+            <NavLink to="/builder" className="text-white">
+              Builder
+            </NavLink>
+            <NavLink to="/about" className="text-white">
+              About
+            </NavLink> */}
+              <NavLink to="/contact" className={`text-white ${pathname === "/contact" ? "border-b-[1px] pb-2" : ""}`}>
                 Contact
               </NavLink>
             </motion.div>
