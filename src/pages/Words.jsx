@@ -3,6 +3,8 @@ import Search from "@c/Search";
 import Theme from "@c/Theme";
 import Card from "@c/Card";
 import CardDetails from "@c/CardDetails";
+import Loading from "@c/Loading";
+
 import { getWords, getThemes } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
@@ -65,13 +67,7 @@ const Words = () => {
     setSearchValue(newValue);
   };
 
-  if (isLoadingWords)
-    return (
-      <h4 className="text-white">
-        Loading. Please refresh the page if the glyphs are not showing up after a few seconds. The website is currently
-        hosted for free, so the database is put to sleep if there are no queries for a while.
-      </h4>
-    );
+  if (isLoadingWords) return <Loading />;
   return (
     <section
       className={`mt-16 pt-4 flex scrollbar-none overflow-x-hidden justify-center h-screen lg:bg-gradient-primary ${
@@ -137,11 +133,11 @@ const Words = () => {
             )}
           </div>
           <div>
-            <div className="flex flex-col items-center gap-4 overflow-hidden scrollbar-none">
+            <div className="flex flex-col items-center overflow-hidden scrollbar-none">
               <Search mobileView onChange={handleSearchInput} onErase={() => setSearchValue("")} />
               <p className="text-xs">For diacritics, type 2 vowels ! </p>
 
-              <div className="text-sm px-6 flex gap-4 flex-wrap justify-center font-semibold uppercase">
+              <div className="text-xs px-2 flex flex-wrap justify-evenly font-semibold uppercase">
                 {!isLoadingThemes && (
                   <p
                     onClick={() => setSelectedTheme(null)}
@@ -166,9 +162,9 @@ const Words = () => {
                 </div>
               ) : (
                 <div
-                  className={`border-t-[1px] py-4 border-split-red w-full  scrollbar h-[60vh] grid ${
+                  className={`border-t-[1px] py-4 border-split-red w-full scrollbar h-[60vh] grid ${
                     isAboveMobileScreens ? `grid-cols-3` : `grid-cols-2`
-                  } gap-6 place-items-center`}>
+                  } gap-4  place-items-center`}>
                   {filteredWords?.map((word, key) => (
                     <Card mobileView onClick={() => setSelectedWord(word)} glyph={word} key={key} type="words" />
                   ))}

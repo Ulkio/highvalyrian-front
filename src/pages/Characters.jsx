@@ -1,6 +1,8 @@
 import { React, useState, useMemo, useEffect } from "react";
 import Card from "@c/Card";
 import CardDetails from "@c/CardDetails";
+import Loading from "@c/Loading";
+
 import { getCharacters } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
@@ -32,7 +34,7 @@ const Characters = () => {
     if (selectedCharacter && !isAboveMediumScreens) setModalOnScreen(true);
   }, [selectedCharacter]);
 
-  if (isLoadingCharacters) return <h4 className="text-white">Loading</h4>;
+  if (isLoadingCharacters) return <Loading />;
   return (
     <section
       className={` flex scrollbar-none overflow-x-hidden items-center justify-center h-screen lg:bg-gradient-primary ${

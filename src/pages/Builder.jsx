@@ -2,6 +2,7 @@ import { React, useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getWords, getNumbers, getCharacters } from "../api";
 import Card from "@c/Card";
+import Loading from "@c/Loading";
 
 const Builder = () => {
   const BASE_URL =
@@ -34,7 +35,7 @@ const Builder = () => {
   }, [words, characters, numbers]);
   console.log(characters);
 
-  if (!glyphs) return <div className="h-full flex flex-row justify-center items-center">Loading...</div>;
+  if (!glyphs) return <Loading />;
   return (
     <section className={`mt-16 pt-4  overflow-x-hidden  h-screen flex flex-row gap-8`}>
       <div className="flex flex-wrap justify-between gap-4 px-8 basis-3/5  overflow-scroll">

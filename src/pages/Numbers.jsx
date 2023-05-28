@@ -1,6 +1,8 @@
 import { React, useState, useMemo, useEffect } from "react";
 import Card from "@c/Card";
 import CardDetails from "@c/CardDetails";
+import Loading from "@c/Loading";
+
 import { getNumbers } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
@@ -32,7 +34,7 @@ const Numbers = () => {
     if (selectedNumber && !isAboveMediumScreens) setModalOnScreen(true);
   }, [selectedNumber]);
 
-  if (isLoadingNumbers) return <h4 className="text-white">Loading</h4>;
+  if (isLoadingNumbers) return <Loading />;
   return (
     <section
       className={` flex scrollbar-none overflow-x-hidden items-center justify-center h-screen lg:bg-gradient-primary ${
