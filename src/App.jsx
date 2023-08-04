@@ -8,6 +8,7 @@ import Characters from "@p/Characters";
 import Numbers from "@p/Numbers";
 import Contact from "@p/Contact";
 import NotFound from "@p/NotFound";
+import Admin from "@p/Admin";
 import { useMediaQuery } from "react-responsive";
 
 import { Routes, Route } from "react-router-dom";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/builder" element={<Builder />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       {isAboveMediumScreens && <Footer />}

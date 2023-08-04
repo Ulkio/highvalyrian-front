@@ -16,6 +16,10 @@ export const getWords = async () => {
   });
   return sortedResults;
 };
+export const postWord = async (formData) => {
+  await axios.post(`${BASE_URL}/words`, formData, { headers: { "Content-Type": "multipart/form-data" } });
+};
+
 export const getNumbers = async () => {
   const results = await axios.get(`${BASE_URL}/numbers`);
   const sortedResults = results.data.sort(function (a, b) {
