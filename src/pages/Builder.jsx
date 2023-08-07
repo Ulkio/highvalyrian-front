@@ -33,7 +33,26 @@ const Builder = () => {
   return (
     <section className={`mt-16 px-8 h-screen flex flex-row gap-8`}>
       <div className="flex flex-col  gap-8 px-16 basis-3/5 overflow-scroll">
-        <p className="mt-16 font-bold">Alphabet</p>
+        <p className="text-center font-bold">Separator</p>
+        <div className="flex flex-wrap justify-center gap-4">
+          {words
+            ?.filter((gl) => gl.englishTranslation === "middot")
+            .map((filteredCharacter) => (
+              <div
+                onClick={() => handleClickGlyph(filteredCharacter)}
+                className="flex flex-col justify-center items-center text-center cursor-pointer">
+                <img
+                  className="w-16 h-16 object-scale-down invert"
+                  src={`https://highvalyrianapi.onrender.com/assets/words/0176-middot.png`}
+                  width={20}
+                  height={20}
+                  alt="separator"
+                />
+              </div>
+            ))}
+        </div>
+
+        <p className="font-bold">Alphabet</p>
         <div className="flex flex-wrap justify-center gap-4">
           {characters?.map((gl) => {
             return (
@@ -43,13 +62,7 @@ const Builder = () => {
                 <p className="text-sm select-none">{gl.englishTranslation}</p>
                 <img
                   className="w-8 h-8 object-scale-down invert"
-                  src={`https://highvalyrianapi.onrender.com/assets/${
-                    gl.classId === "645567522c371064ed627267"
-                      ? "numbers"
-                      : gl.classId === "645567522c371064ed627268"
-                      ? "characters"
-                      : "words"
-                  }/${gl.imagePath}`}
+                  src={`https://highvalyrianapi.onrender.com/assets/characters/${gl.imagePath}`}
                   width={20}
                   height={20}
                   alt={gl.englishTranslation}
@@ -68,13 +81,7 @@ const Builder = () => {
                 <p className="text-sm select-none">{gl.englishTranslation}</p>
                 <img
                   className="w-8 h-8 object-scale-down invert"
-                  src={`https://highvalyrianapi.onrender.com/assets/${
-                    gl.classId === "645567522c371064ed627267"
-                      ? "numbers"
-                      : gl.classId === "645567522c371064ed627268"
-                      ? "characters"
-                      : "words"
-                  }/${gl.imagePath}`}
+                  src={`https://highvalyrianapi.onrender.com/assets/numbers/${gl.imagePath}`}
                   width={20}
                   height={20}
                   alt={gl.englishTranslation}
@@ -93,13 +100,7 @@ const Builder = () => {
                 <p className="text-sm select-none">{gl.englishTranslation}</p>
                 <img
                   className="w-8 h-8 object-scale-down invert"
-                  src={`https://highvalyrianapi.onrender.com/assets/${
-                    gl.classId === "645567522c371064ed627267"
-                      ? "numbers"
-                      : gl.classId === "645567522c371064ed627268"
-                      ? "characters"
-                      : "words"
-                  }/${gl.imagePath}`}
+                  src={`https://highvalyrianapi.onrender.com/assets/words/${gl.imagePath}`}
                   width={20}
                   height={20}
                   alt={gl.englishTranslation}
@@ -109,7 +110,7 @@ const Builder = () => {
           })}
         </div>
       </div>
-      <div className="self-center basis-2/5">
+      <div className="flex flex-col gap-6 self-center basis-2/5">
         <div className="flex flex-row self-center justify-center items-center">
           {builtWord?.map((gl) => {
             return <p>{gl.valyrianTranslation + " "} </p>;
@@ -117,11 +118,11 @@ const Builder = () => {
         </div>
 
         <div className="flex flex-row self-center justify-center items-center">
-          <img className="w-16 h-16 object-scale-down invert" src={`${BASE_URL}/assets/words/doubledot.png`} />
+          <img className="w-16 h-16 object-scale-down invert" src={`${BASE_URL}/assets/words/0066-doubledot.png`} />
           {builtWord?.map((gl) => {
             return (
               <img
-                className="w-16 h-16 object-scale-down invert"
+                className="w-10 h-10 object-scale-down invert"
                 src={`${BASE_URL}/assets/${
                   gl.classId === "645567522c371064ed627267"
                     ? "numbers"
@@ -132,18 +133,18 @@ const Builder = () => {
               />
             );
           })}
-          <img className="w-16 h-16 object-scale-down invert" src={`${BASE_URL}/assets/words/doubledot.png`} />
+          <img className="w-16 h-16 object-scale-down invert" src={`${BASE_URL}/assets/words/0066-doubledot.png`} />
         </div>
         <div className="flex flex-row self-center justify-center items-center">
           <span>Meaning : </span>
           {builtWord?.map((gl) => {
-            return <p>{gl.englishTranslation + " "}</p>;
+            return <p>{gl.englishTranslation === "middot" ? " " : gl.englishTranslation + " "}</p>;
           })}
         </div>
-        <div
-          className="cursor-pointer self-center justify-center items-center flex w-full"
-          onClick={() => setBuiltWord([])}>
-          Reset
+        <div className="justify-center items-center flex">
+          <button className=" bg-split-red  text-white font-bold py-2 px-4 rounded" onClick={() => setBuiltWord([])}>
+            RESET
+          </button>
         </div>
       </div>
     </section>

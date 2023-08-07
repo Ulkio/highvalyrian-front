@@ -25,7 +25,7 @@ const Navbar = () => {
               Numbers
             </NavLink>
             <NavLink to="/builder" className={`text-white ${pathname === "/builder" ? "border-b-[1px] pb-2" : ""}`}>
-              Builder <span className="text-[10px]">(WIP)</span>
+              Builder
             </NavLink>
             <NavLink to="/contact" className={`text-white ${pathname === "/contact" ? "border-b-[1px] pb-2" : ""}`}>
               Contact
