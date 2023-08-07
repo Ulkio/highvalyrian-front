@@ -28,10 +28,6 @@ const Words = () => {
     staleTime: 60 * 1000,
   });
 
-  useEffect(() => {
-    searchValue.replace(/ii/g, "ī").replace(/ee/g, "ē").replace(/aa/g, "ā");
-  }, [searchValue]);
-
   const filteredWords = useMemo(() => {
     if (!words) return;
     return words
