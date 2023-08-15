@@ -21,8 +21,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Words />} />
-        <Route exact path="/alphabet" element={<Characters />} />
-        <Route exact path="/numbers" element={<Numbers />} />
+        <Route path="/alphabet" element={<Characters />} />
+        <Route path="/numbers" element={<Numbers />} />
         <Route path="/phrases" element={<Phrases />} />
         <Route path="/builder" element={<Builder />} />
         <Route path="/about" element={<About />} />
