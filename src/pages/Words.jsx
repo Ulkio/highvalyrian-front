@@ -50,17 +50,12 @@ const Words = () => {
     if (selectedWord && !isAboveMediumScreens) setModalOnScreen(true);
   }, [selectedWord]);
 
-  const handleSearchInput = (event) => {
-    const value = event.target.value;
-    const newValue = value
-      .replace(/ii/g, "ī")
-      .replace(/ee/g, "ē")
-      .replace(/aa/g, "ā")
-      .replace(/oo/g, "ō")
-      .replace(/yy/g, "ȳ")
-      .replace(/uu/g, "ū");
 
-    setSearchValue(newValue);
+  const handleSearchInput = (e) => {
+    setSearchValue(e.target.value);
+  };
+  const handleAddCharacter = (e) => {
+    setSearchValue(e.target.value);
   };
 
   if (isLoadingWords) return <Loading />;
@@ -82,12 +77,11 @@ const Words = () => {
           <div className="w-full basis-5/12 ">
             <div className="ml-20 flex flex-col items-center ">
               <Search onChange={handleSearchInput} onErase={() => setSearchValue("")} />
-              <p className="text-xs">For diacritics, type 2 vowels ! </p>
               <div className=" my-2 flex gap-2 flex-wrap justify-center font-semibold uppercase">
                 {!isLoadingThemes && (
                   <p
                     onClick={() => setSelectedTheme(null)}
-                    className={`${!selectedTheme && `bg-theme-background `} px-5 py-2 hover:cursor-pointer`}>
+                    className={`${!selectedTheme && `bg-theme-background `} px-5 py-2 hover:cursor-pointer rounded-lg`}>
                     All
                   </p>
                 )}
@@ -130,9 +124,7 @@ const Words = () => {
           </div>
           <div>
             <div className="flex flex-col items-center overflow-hidden scrollbar-none">
-              <Search mobileView onChange={handleSearchInput} onErase={() => setSearchValue("")} />
-              <p className="text-xs">For diacritics, type 2 vowels ! </p>
-
+              <Search mobileView onAddCharacter={handleAddCharacter} onChange={handleSearchInput} onErase={() => setSearchValue("")} />
               <div className="text-xs px-2 flex flex-wrap justify-evenly font-semibold uppercase">
                 {!isLoadingThemes && (
                   <p
