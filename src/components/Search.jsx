@@ -21,25 +21,36 @@ const Search = ({ onChange, onErase, mobileView }) => {
   };
 
   return (
-  <div className="flex gap-4">
-    <div className={` bg-white-custom flex items-center rounded-lg  shadow-xl `}>
-      <FaSearch className={`ml-2 transform rotate-90`} color="rgba(0,0,0,0.2)" size="30px" />
-      <input
-        placeholder="Search a glyph..."
-        type="text"
-        name="search"
-        id="search"
-        value={value}
-        onChange={handleChange}
-        autoComplete="off"
-        className={`w-full ${
-          mobileView ? `p-2` : `p-4`
-        } bg-white-custom  font-semibold text-dark  focus:outline-none  sm:text-md`}
+    <div className="flex gap-4">
+      <div
+        className={` bg-white-custom flex items-center rounded-lg  shadow-xl `}
+      >
+        <FaSearch
+          className={`ml-2 transform rotate-90`}
+          color="rgba(0,0,0,0.2)"
+          size="30px"
         />
-      <MdClose onClick={handleCloseButton} className="mr-2 hover:cursor-pointer " color="rgba(0,0,0,0.2)" size="30px" />
-    </div>
-    <div className="flex items-center justify-center gap-4 ">
-    {["ā", "ō", "ȳ", "ū"].map((char) => (
+        <input
+          placeholder="Search a glyph..."
+          type="text"
+          name="search"
+          id="search"
+          value={value}
+          onChange={handleChange}
+          autoComplete="off"
+          className={`w-full ${
+            mobileView ? `p-2` : `p-4`
+          } bg-white-custom  font-semibold text-dark  focus:outline-none  sm:text-md`}
+        />
+        <MdClose
+          onClick={handleCloseButton}
+          className="mr-2 hover:cursor-pointer "
+          color="rgba(0,0,0,0.2)"
+          size="30px"
+        />
+      </div>
+      <div className="flex items-center justify-center gap-4 ">
+        {["ā", "ō", "ȳ", "ū", "ī", "ē"].map((char) => (
           <p
             key={char}
             onClick={() => handleAddCharacter(char)}
@@ -52,8 +63,8 @@ const Search = ({ onChange, onErase, mobileView }) => {
             {char}
           </p>
         ))}
+      </div>
     </div>
-  </div>
   );
 };
 

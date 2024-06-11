@@ -12,23 +12,53 @@ const Navbar = () => {
   return (
     <nav className="lg:bg-navbar-dark bg-split-red w-full fixed top-0 ">
       <div className="flex justify-between items-center  h-16 lg:px-24 px-6">
-        <h1 className="z-100 font-bold lg:text-lg">{<NavLink to="/">HIGH VALYRIAN GLYPHS</NavLink>}</h1>
+        <h1 className="z-100 font-bold lg:text-lg">
+          {<NavLink to="/">HIGH VALYRIAN GLYPHS</NavLink>}
+        </h1>
         {isAboveMediumScreens ? (
           <div className="flex justify-between gap-16 text-sm font-semibold">
-            <NavLink to="/" className={`text-white ${pathname === "/" ? "border-b-[1px] pb-2" : ""}`}>
+            <NavLink
+              to="/"
+              className={`text-white ${
+                pathname === "/" ? "border-b-[1px] pb-2" : ""
+              }`}
+            >
               Words
             </NavLink>
-            <NavLink to="/alphabet" className={`text-white ${pathname === "/alphabet" ? "border-b-[1px] pb-2" : ""}`}>
+            <NavLink
+              to="/alphabet"
+              className={`text-white ${
+                pathname === "/alphabet" ? "border-b-[1px] pb-2" : ""
+              }`}
+            >
               Alphabet
             </NavLink>
-            <NavLink to="/numbers" className={`text-white ${pathname === "/numbers" ? "border-b-[1px] pb-2" : ""}`}>
+            <NavLink
+              to="/numbers"
+              className={`text-white ${
+                pathname === "/numbers" ? "border-b-[1px] pb-2" : ""
+              }`}
+            >
               Numbers
             </NavLink>
             {/* <NavLink to="/builder" className={`text-white ${pathname === "/builder" ? "border-b-[1px] pb-2" : ""}`}>
               Builder(wip)
             </NavLink> */}
-            <NavLink to="/contact" className={`text-white ${pathname === "/contact" ? "border-b-[1px] pb-2" : ""}`}>
+            <NavLink
+              to="/contact"
+              className={`text-white ${
+                pathname === "/contact" ? "border-b-[1px] pb-2" : ""
+              }`}
+            >
               Contact
+            </NavLink>
+            <NavLink
+              to="/admin"
+              className={`text-white ${
+                pathname === "/contact" ? "border-b-[1px] pb-2" : ""
+              }`}
+            >
+              Admin
             </NavLink>
           </div>
         ) : (
@@ -48,17 +78,38 @@ const Navbar = () => {
               }}
               className={`z-auto rounded-b-3xl fixed right-0 h-full w-64 uppercase font-semibold  text-white-custom bg-split-red flex flex-col justify-evenly px-4  ${
                 !isMobileNavOpen && "hidden"
-              }`}>
-              <NavLink to="/" className={`text-white ${pathname === "/" ? "border-b-[1px] pb-2" : ""}`}>
+              }`}
+            >
+              <NavLink
+                to="/"
+                className={`text-white ${
+                  pathname === "/" ? "border-b-[1px] pb-2" : ""
+                }`}
+              >
                 Words
               </NavLink>
-              <NavLink to="/alphabet" className={`text-white ${pathname === "/alphabet" ? "border-b-[1px] pb-2" : ""}`}>
+              <NavLink
+                to="/alphabet"
+                className={`text-white ${
+                  pathname === "/alphabet" ? "border-b-[1px] pb-2" : ""
+                }`}
+              >
                 Alphabet
               </NavLink>
-              <NavLink to="/numbers" className={`text-white ${pathname === "/numbers" ? "border-b-[1px] pb-2" : ""}`}>
+              <NavLink
+                to="/numbers"
+                className={`text-white ${
+                  pathname === "/numbers" ? "border-b-[1px] pb-2" : ""
+                }`}
+              >
                 Numbers
               </NavLink>
-              <NavLink to="/builder" className={`text-white ${pathname === "/builder" ? "border-b-[1px] pb-2" : ""}`}>
+              <NavLink
+                to="/builder"
+                className={`text-white ${
+                  pathname === "/builder" ? "border-b-[1px] pb-2" : ""
+                }`}
+              >
                 Builder <span className="text-[10px]">(WIP)</span>
               </NavLink>
               {/* <NavLink to="/phrases" className="text-white">
@@ -70,7 +121,12 @@ const Navbar = () => {
             <NavLink to="/about" className="text-white">
               About
             </NavLink> */}
-              <NavLink to="/contact" className={`text-white ${pathname === "/contact" ? "border-b-[1px] pb-2" : ""}`}>
+              <NavLink
+                to="/contact"
+                className={`text-white ${
+                  pathname === "/contact" ? "border-b-[1px] pb-2" : ""
+                }`}
+              >
                 Contact
               </NavLink>
             </motion.div>
