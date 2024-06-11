@@ -42,7 +42,13 @@ const Admin = () => {
     data.append("imagePath", file);
     try {
       await postWord(data);
-      setFormData({ valyrianTranslation: "", englishTranslation: "", info: "", classId: "", imagePath: null });
+      setFormData({
+        valyrianTranslation: "",
+        englishTranslation: "",
+        info: "",
+        classId: "",
+        imagePath: null,
+      });
       setFile(null);
       toast.success("Success !", {
         position: "bottom-center",
@@ -71,7 +77,11 @@ const Admin = () => {
 
   return (
     <section className="lg:bg-gradient-primary h-screen flex justify-center ">
-      <form onSubmit={handleSubmit} method="POST" className="md:w-[800px] flex flex-col justify-center gap-4 md:gap-6">
+      <form
+        onSubmit={handleSubmit}
+        method="POST"
+        className="md:w-[800px] flex flex-col justify-center gap-4 md:gap-6"
+      >
         <label className="font-bold" htmlFor="valyrianTranslation">
           Valyrian translation
         </label>
@@ -103,7 +113,6 @@ const Admin = () => {
           name="info"
           value={formData.info}
           onChange={handleInputChange}
-          required
         />
         <label className="font-bold" htmlFor="classId">
           Class
@@ -113,7 +122,8 @@ const Admin = () => {
           name="classId"
           id="classId"
           value={formData.classId}
-          onChange={handleInputChange}>
+          onChange={handleInputChange}
+        >
           {themes?.map((theme) => {
             return (
               <option className="text-dark" value={theme._id} key={theme._id}>
@@ -123,7 +133,12 @@ const Admin = () => {
           })}
         </select>
         <div className="w-full flex justify-center">
-          <input onChange={handleFileChange} name="imagePath" type="file" accept="image/png" />
+          <input
+            onChange={handleFileChange}
+            name="imagePath"
+            type="file"
+            accept="image/png"
+          />
         </div>
         <button type="submit">Submit</button>
       </form>
