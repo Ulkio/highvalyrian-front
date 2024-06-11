@@ -52,7 +52,7 @@ const Navbar = () => {
               Contact
             </NavLink>
 
-            {/* <NavLink
+            <NavLink
               to="/login"
               className={`text-white ${
                 pathname === "/login" ? "border-b-[1px] pb-2" : ""
@@ -69,7 +69,7 @@ const Navbar = () => {
               >
                 Admin page
               </NavLink>
-            )} */}
+            )}
           </div>
         ) : (
           <div>
