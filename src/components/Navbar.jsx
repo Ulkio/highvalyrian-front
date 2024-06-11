@@ -52,14 +52,14 @@ const Navbar = () => {
             >
               Contact
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/admin"
               className={`text-white ${
                 pathname === "/contact" ? "border-b-[1px] pb-2" : ""
               }`}
             >
               Admin
-            </NavLink>
+            </NavLink> */}
           </div>
         ) : (
           <div>
