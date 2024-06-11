@@ -3,12 +3,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { FaBars } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { currentUser } = useAuth();
   const isAboveMediumScreens = useMediaQuery({ query: `(min-width:1024px)` });
   const pathname = useLocation().pathname;
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-
   return (
     <nav className="lg:bg-navbar-dark bg-split-red w-full fixed top-0 ">
       <div className="flex justify-between items-center  h-16 lg:px-24 px-6">
@@ -41,9 +42,7 @@ const Navbar = () => {
             >
               Numbers
             </NavLink>
-            {/* <NavLink to="/builder" className={`text-white ${pathname === "/builder" ? "border-b-[1px] pb-2" : ""}`}>
-              Builder(wip)
-            </NavLink> */}
+
             <NavLink
               to="/contact"
               className={`text-white ${
@@ -52,14 +51,25 @@ const Navbar = () => {
             >
               Contact
             </NavLink>
+
             {/* <NavLink
-              to="/admin"
+              to="/login"
               className={`text-white ${
-                pathname === "/contact" ? "border-b-[1px] pb-2" : ""
+                pathname === "/login" ? "border-b-[1px] pb-2" : ""
               }`}
             >
-              Admin
-            </NavLink> */}
+              Manage
+            </NavLink>
+            {currentUser && (
+              <NavLink
+                to="/admin"
+                className={`text-white ${
+                  pathname === "/admin" ? "border-b-[1px] pb-2" : ""
+                }`}
+              >
+                Admin page
+              </NavLink>
+            )} */}
           </div>
         ) : (
           <div>
@@ -112,15 +122,6 @@ const Navbar = () => {
               >
                 Builder <span className="text-[10px]">(WIP)</span>
               </NavLink>
-              {/* <NavLink to="/phrases" className="text-white">
-              Phrases
-            </NavLink>
-            <NavLink to="/builder" className="text-white">
-              Builder
-            </NavLink>
-            <NavLink to="/about" className="text-white">
-              About
-            </NavLink> */}
               <NavLink
                 to="/contact"
                 className={`text-white ${
